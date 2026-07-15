@@ -1,0 +1,12 @@
+node_modules
+dist
+dist-server
+build
+src-cra-backup
+public-keep
+.git
+.vercel
+.env
+.env.local
+*.log
+.DS_Store

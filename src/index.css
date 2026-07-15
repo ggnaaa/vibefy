@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Syne", "Outfit", sans-serif;
+  --color-ink: #0c0c0e;
+  --color-panel: #141418;
+  --color-elevated: #1c1c22;
+  --color-line: #2a2a32;
+  --color-mute: #8b8b98;
+  --color-soft: #c8c8d0;
+  --color-accent: #ff5a36;
+  --color-accent-2: #3dff9a;
+  --color-glow: color-mix(in oklab, var(--color-accent) 35%, transparent);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-ink);
+  color: white;
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 99px;
+}
+
+.app-shell {
+  min-height: 100%;
+  background:
+    radial-gradient(900px 500px at 10% -10%, color-mix(in oklab, var(--color-accent) 18%, transparent), transparent 60%),
+    radial-gradient(700px 400px at 100% 0%, color-mix(in oklab, var(--color-accent-2) 10%, transparent), transparent 55%),
+    var(--color-ink);
+  animation: ambience 18s ease-in-out infinite alternate;
+}
+
+@keyframes ambience {
+  from { filter: hue-rotate(0deg); }
+  to { filter: hue-rotate(12deg); }
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.h-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.h-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #1a1a20 25%, #24242c 50%, #1a1a20 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+  border-radius: 12px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spin {
+  animation: spin 0.8s linear infinite;
+}
