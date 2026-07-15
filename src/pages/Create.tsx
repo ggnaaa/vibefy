@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 import type { Track } from '@/types/music';
 import { useMusicStore } from '@/store/musicStore';
 import SongRow from '@/components/SongRow';
+import { generateMusicClip } from '@/services/generateMusic';
 import {
   BEAT_PRESETS,
   CHORDS,
@@ -215,13 +216,7 @@ export default function Create() {
   const generateAi = async () => {
     setAiBusy(true);
     try {
-      const res = await fetch('/api/generate-music', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt: aiPrompt }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Failed');
+      const data = await generateMusicClip(aiPrompt);
       const mime = data.mime || 'audio/wav';
       const streamUrl = `data:${mime};base64,${data.audioBase64}`;
       const track: Track = {
@@ -526,7 +521,9 @@ export default function Create() {
                 {aiBusy ? <Loader2 className="spin" size={16} /> : <Sparkles size={16} />}
                 {aiBusy ? 'Generating…' : 'Generate AI clip'}
               </button>
-              <p className="mt-1 text-[11px] text-[var(--color-mute)]">Needs HF_TOKEN in .env</p>
+              <p className="mt-1 text-[11px] text-[var(--color-mute)]">
+                Needs VITE_HF_TOKEN (HF read token). Beat Studio above works without it.
+              </p>
             </motion.div>
           )}
         </AnimatePresence>

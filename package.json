@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "tsc --noEmit && vite build && tsc -p tsconfig.server.json",
+    "build": "tsc --noEmit && vite build",
+    "build:docker": "tsc --noEmit && vite build && tsc -p tsconfig.server.json",
     "dev": "vite --port 5000 --host",
     "preview": "vite preview --port 5000",
     "start": "node dist-server/index.js",

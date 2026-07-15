@@ -3,48 +3,51 @@ title: Vibefy
 emoji: 🎵
 colorFrom: red
 colorTo: green
-sdk: docker
-app_port: 7860
+sdk: static
+app_build_command: npm run build
+app_file: dist/index.html
 pinned: false
 ---
 
 # Vibefy — Create · Listen · Enjoy
 
-Ad-free music app: stream **Audius** + **Jamendo**, and **create AI tracks** with free Hugging Face MusicGen.
+Free **Static** Space deploy (Docker Spaces may require a paid HF plan).
+
+Ad-free music: **Audius** + **Jamendo**, plus in-browser **Beat Studio** (drums, piano, guitar, violin, vocals).
 
 ## Local
 
 ```bash
 npm install
 cp .env.example .env
-# Add HF_TOKEN (free): https://huggingface.co/settings/tokens
 npm run dev   # http://localhost:5000
 ```
 
-## Public deploy (Hugging Face Spaces — free)
+## Deploy on Hugging Face (FREE — choose Static)
 
-1. Create a **Docker** Space at [huggingface.co/new-space](https://huggingface.co/new-space)
-2. Push this repo to the Space
-3. **Settings → Secrets**: `HF_TOKEN` = your HF read token (needed for Create)
-4. **Variables** (optional): `VITE_JAMENDO_CLIENT_ID`, `VITE_AUDIUS_API_KEY`
-5. Optional secrets: `GROQ_API_KEY`
-6. Share `https://huggingface.co/spaces/<you>/<space>`
+1. Go to [huggingface.co/new-space](https://huggingface.co/new-space)
+2. **SDK: Static** (not Docker — Docker is paid on some accounts)
+3. Create the Space, then push this repo to it
+4. Optional Space **variable**: `VITE_HF_TOKEN` = HF read token (only for optional MusicGen AI loop)
+5. Optional: `VITE_JAMENDO_CLIENT_ID`
+6. Open `https://huggingface.co/spaces/<you>/<space>`
 
-## What people can do
+App uses hash routes (`/#/create`) so Static hosting works.
 
-| Feature | How |
+### What works on Static (free)
+| Feature | Works? |
 |---|---|
-| Beat Studio | Drums step-sequencer, piano/guitar chords, lyrics, mic + stylized autotune |
-| Listen | Audius trending/search + Jamendo (ad-free) |
-| Save creations | Local library + download mix |
-| Optional AI loop | MusicGen via `HF_TOKEN` (collapsed in Create) |
+| Listen / search (Audius, Jamendo) | Yes |
+| Beat Studio (drums, piano, guitar, violin, mic) | Yes |
+| Save / like / playlists | Yes (in browser) |
+| Optional MusicGen AI loop | Needs `VITE_HF_TOKEN` variable |
 
 ## Notes
 
-- MusicGen clips are short instrumentals; first generation may take 30–60s (cold start).
-- Model license is **CC-BY-NC** — fine for personal / portfolio / non-commercial demos.
-- Free HF Inference has rate limits; for heavy traffic upgrade HF or self-host later.
+- Beat Studio needs **no** paid API and **no** Docker.
+- `VITE_HF_TOKEN` is baked into the frontend at build time — use a **read** token and rotate if abused.
+- `Dockerfile` remains in the repo if you upgrade to paid Docker later.
 
 ## Stack
 
-Vite 6 · React 19 · TypeScript · Tailwind 4 · Framer Motion · Zustand · hls.js · Hono · MusicGen · Docker
+Vite 6 · React 19 · TypeScript · Tailwind 4 · Tone.js · Zustand · Framer Motion
