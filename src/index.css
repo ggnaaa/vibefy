@@ -60,12 +60,6 @@ input, textarea {
     radial-gradient(900px 500px at 10% -10%, color-mix(in oklab, var(--color-accent) 18%, transparent), transparent 60%),
     radial-gradient(700px 400px at 100% 0%, color-mix(in oklab, var(--color-accent-2) 10%, transparent), transparent 55%),
     var(--color-ink);
-  animation: ambience 18s ease-in-out infinite alternate;
-}
-
-@keyframes ambience {
-  from { filter: hue-rotate(0deg); }
-  to { filter: hue-rotate(12deg); }
 }
 
 .brand {

@@ -32,12 +32,12 @@ npm run dev   # http://localhost:5000
 
 ## What people can do
 
-| Feature | Source | Ads? |
-|---|---|---|
-| Trending / search / play | Audius + Jamendo | No |
-| Create AI song | MusicGen (HF free tier) | No |
-| Save / like / playlists | Local on device | No |
-| Famous commercial hits | “Open on YouTube” externally | Outside app |
+| Feature | How |
+|---|---|
+| Beat Studio | Drums step-sequencer, piano/guitar chords, lyrics, mic + stylized autotune |
+| Listen | Audius trending/search + Jamendo (ad-free) |
+| Save creations | Local library + download mix |
+| Optional AI loop | MusicGen via `HF_TOKEN` (collapsed in Create) |
 
 ## Notes
 

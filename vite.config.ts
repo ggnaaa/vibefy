@@ -11,6 +11,12 @@ export default defineConfig(({ mode }) => {
   process.env.GROQ_API_KEY = process.env.GROQ_API_KEY || env.GROQ_API_KEY || '';
 
   return {
+    define: {
+      global: 'globalThis',
+    },
+    optimizeDeps: {
+      include: ['tone', 'framer-motion'],
+    },
     plugins: [
       react(),
       tailwindcss(),

@@ -88,8 +88,8 @@ export default function Home() {
           <Wand2 size={22} />
         </span>
         <div className="min-w-0 flex-1">
-          <p className="font-bold">Create with AI</p>
-          <p className="text-xs text-[var(--color-mute)]">Prompt → MusicGen → play instantly</p>
+          <p className="font-bold">Open Beat Studio</p>
+          <p className="text-xs text-[var(--color-mute)]">Drums · piano · guitar · vocals</p>
         </div>
         <Sparkles className="text-[var(--color-accent-2)]" size={18} />
       </motion.button>
